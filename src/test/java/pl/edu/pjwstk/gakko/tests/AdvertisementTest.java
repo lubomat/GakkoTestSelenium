@@ -7,16 +7,14 @@ import pl.edu.pjwstk.gakko.pages.AdvertisementPage;
 public class AdvertisementTest extends BaseTest {
 
     @Test
-    public void addAdvertisementTest() {
+    public void createAdvertisementTest() {
 
         AdvertisementPage advertisementPage = new AdvertisementPage(driver);
         advertisementPage.enterAdvertisementModule();
         advertisementPage.createNewAdvertisement("Ogłoszenie testowe");
 
         Assert.assertTrue(advertisementPage.savedSuccessfullyMessage.isDisplayed());
-        Assert.assertEquals(advertisementPage.getSuccessfullyMessage(),"Ogłoszenie zostało zapisane pomyślnie");
-
-
+        Assert.assertEquals(advertisementPage.getSuccessfullyMessage(), "Ogłoszenie zostało zapisane pomyślnie");
 
     }
 }

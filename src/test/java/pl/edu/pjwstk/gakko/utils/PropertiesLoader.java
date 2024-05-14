@@ -19,7 +19,6 @@ public class PropertiesLoader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return loginData;
     }
 }

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class AdvertisementPage {
-
     @FindBy(xpath = "//span[text()='Ogłoszenia']")
     private WebElement advertisementButton;
 
