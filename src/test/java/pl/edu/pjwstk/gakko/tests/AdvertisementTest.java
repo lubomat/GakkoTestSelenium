@@ -7,7 +7,14 @@ public class AdvertisementTest extends BaseTest {
 
     @Test
     public void addAdvertisementTest() {
+
+        int randomNumber = (int) (Math.random() * 100);
+
         AdvertisementPage advertisementPage = new AdvertisementPage(driver);
-        advertisementPage.enterAdvertisement();
+        advertisementPage.enterAdvertisementModule();
+        advertisementPage.createNewAdvertisement("Ogłoszenie testowe numer " + randomNumber);
+
+
+
     }
 }

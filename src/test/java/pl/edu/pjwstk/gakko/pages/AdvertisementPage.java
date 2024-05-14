@@ -10,6 +10,19 @@ public class AdvertisementPage {
     @FindBy(xpath = "//span[text()='Ogłoszenia']")
     private WebElement advertisementButton;
 
+    @FindBy(xpath = "//span[text()='Dodaj nowe ogłoszenie']")
+    private WebElement addNewAdvertisementButton;
+
+    @FindBy(xpath = "//span[text()='Dodaj bezpośrednio w kursie']")
+    private WebElement advertisementOptionButton;
+
+    @FindBy(className = "note-editable")
+    private WebElement noteAdvertisementInput;
+
+    @FindBy(css = "button.btn.btn-primary")
+    private WebElement saveButton;
+
+
     private WebDriver driver;
 
     public AdvertisementPage(WebDriver driver) {
@@ -17,7 +30,14 @@ public class AdvertisementPage {
         this.driver = driver;
     }
 
-    public void enterAdvertisement() {
+    public void enterAdvertisementModule() {
         advertisementButton.click();
+    }
+
+    public void createNewAdvertisement(String note) {
+        addNewAdvertisementButton.click();
+        advertisementOptionButton.click();
+        noteAdvertisementInput.sendKeys(note);
+        saveButton.click();
     }
 }
