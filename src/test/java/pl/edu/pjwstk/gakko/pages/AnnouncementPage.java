@@ -5,18 +5,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdvertisementPage {
+public class AnnouncementPage {
     @FindBy(xpath = "//span[text()='Ogłoszenia']")
-    private WebElement advertisementButton;
+    private WebElement announcementButton;
 
     @FindBy(xpath = "//span[text()='Dodaj nowe ogłoszenie']")
-    private WebElement addNewAdvertisementButton;
+    private WebElement addNewAnnouncementButton;
 
     @FindBy(xpath = "//span[text()='Dodaj bezpośrednio w kursie']")
-    private WebElement advertisementOptionButton;
+    private WebElement announcementOptionButton;
 
     @FindBy(className = "note-editable")
-    private WebElement noteAdvertisementInput;
+    private WebElement noteAnnouncementInput;
 
     @FindBy(css = "button.btn.btn-primary")
     private WebElement saveButton;
@@ -26,19 +26,19 @@ public class AdvertisementPage {
 
     private WebDriver driver;
 
-    public AdvertisementPage(WebDriver driver) {
+    public AnnouncementPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
 
-    public void enterAdvertisementModule() {
-        advertisementButton.click();
+    public void enterAnnouncementModule() {
+        announcementButton.click();
     }
 
-    public void createNewAdvertisement(String note) {
-        addNewAdvertisementButton.click();
-        advertisementOptionButton.click();
-        noteAdvertisementInput.sendKeys(note);
+    public void createNewAnnouncement(String note) {
+        addNewAnnouncementButton.click();
+        announcementOptionButton.click();
+        noteAnnouncementInput.sendKeys(note);
         saveButton.click();
     }
 
