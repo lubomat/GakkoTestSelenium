@@ -20,7 +20,7 @@ public class BaseTest {
         driver = new ChromeDriver();
 //        driver = DriverFactory.getDriver();
         driver.manage().timeouts().implicitlyWait(2L, TimeUnit.SECONDS);
-        driver.get("http://kurs-selenium.pl/demo/");
+        driver.get("https://gakko.pjwstk.edu.pl/edux/7984/");
         driver.manage().window().maximize();
     }
 
