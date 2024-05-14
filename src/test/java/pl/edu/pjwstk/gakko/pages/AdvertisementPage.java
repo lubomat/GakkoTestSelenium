@@ -22,6 +22,8 @@ public class AdvertisementPage {
     @FindBy(css = "button.btn.btn-primary")
     private WebElement saveButton;
 
+    @FindBy(css = "div.alert-text")
+    public WebElement savedSuccessfullyMessage;
 
     private WebDriver driver;
 
@@ -39,5 +41,9 @@ public class AdvertisementPage {
         advertisementOptionButton.click();
         noteAdvertisementInput.sendKeys(note);
         saveButton.click();
+    }
+
+    public String getSuccessfullyMessage() {
+        return savedSuccessfullyMessage.getText();
     }
 }
