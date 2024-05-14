@@ -31,8 +31,7 @@ public class BaseTest {
         String password = loginData.get("password");
 
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(login,password);
-
+        loginPage.logIn(login,password);
     }
 
     @AfterMethod
