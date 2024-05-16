@@ -39,7 +39,7 @@ public class AnnouncementTest extends BaseTest {
         test.log(Status.PASS, "Deleting announcement done", SeleniumHelper.getScreenshot(driver));
 
         Assert.assertTrue(announcementPage.deletedSuccessfullyMessage.isDisplayed());
-        Assert.assertEquals(announcementPage.getDeletingSuccessfullyMessage(),"Ogłoszenie zostało usunięte pomyślnie");
+        Assert.assertEquals(announcementPage.getDeletedSuccessfullyMessage(),"Ogłoszenie zostało usunięte pomyślnie");
     }
     @Test(priority = 1)
     public void editAnnouncementTest() throws IOException {
@@ -52,5 +52,8 @@ public class AnnouncementTest extends BaseTest {
         test.log(Status.PASS, "Editing announcement", SeleniumHelper.getScreenshot(driver));
         announcementPage.editAnnouncement("Ogłoszenie edytowane");
         test.log(Status.PASS, "Editing announcement done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(announcementPage.editedSuccessfullyMessage.isDisplayed());
+        Assert.assertEquals(announcementPage.getEditedSuccessfullyMessage(),"Ogłoszenie zostało zapisane pomyślnie");
     }
 }

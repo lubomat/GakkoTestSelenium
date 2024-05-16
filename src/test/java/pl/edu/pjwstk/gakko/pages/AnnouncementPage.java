@@ -31,6 +31,9 @@ public class AnnouncementPage {
     @FindBy(css = "div.alert-text")
     public WebElement deletedSuccessfullyMessage;
 
+    @FindBy(css = "div.alert-text")
+    public WebElement editedSuccessfullyMessage;
+
     @FindBy(css = "button.swal2-confirm.swal2-styled")
     private WebElement deleteAgreeButton;
 
@@ -85,7 +88,7 @@ public class AnnouncementPage {
         logger.info("Deleting announcement done");
     }
 
-    public String getDeletingSuccessfullyMessage() {
+    public String getDeletedSuccessfullyMessage() {
         return deletedSuccessfullyMessage.getText();
     }
 
@@ -104,5 +107,9 @@ public class AnnouncementPage {
         saveButton.click();
         logger.info("Click the save button done");
         logger.info("Editing announcement note done");
+    }
+
+    public String getEditedSuccessfullyMessage() {
+        return editedSuccessfullyMessage.getText();
     }
 }
