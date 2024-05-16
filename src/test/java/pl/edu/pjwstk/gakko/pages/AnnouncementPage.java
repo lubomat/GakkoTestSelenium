@@ -62,10 +62,15 @@ public class AnnouncementPage {
     }
 
     public void deleteFirstAnnouncement() {
+        logger.info("Deleting announcement");
+        logger.info("Marking the checkbox");
         String xpath = String.format("//tr[@data-row='0']//a[contains(@class," +
                 " 'delete-link')]//i[contains(@class, 'la-trash')]");
         SeleniumHelper.waitForElementToExist(driver, By.xpath(xpath));
         driver.findElement(By.xpath(xpath)).click();
+        logger.info("Marking the checkbox done");
+        logger.info("Clicking the delete button");
         deleteAgreeButton.click();
+        logger.info("Clicking the delete button done");
     }
 }

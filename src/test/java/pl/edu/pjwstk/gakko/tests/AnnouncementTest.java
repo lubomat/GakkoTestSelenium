@@ -16,9 +16,11 @@ public class AnnouncementTest extends BaseTest {
 
         ExtentTest test = extentReports.createTest("Creating Announcement Test");
         AnnouncementPage announcementPage = new AnnouncementPage(driver);
-        test.log(Status.PASS, "Logging done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Login done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Entering announcement module", SeleniumHelper.getScreenshot(driver));
         announcementPage.enterAnnouncementModule();
         test.log(Status.PASS, "Entering announcement module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Creating new announcement done", SeleniumHelper.getScreenshot(driver));
         announcementPage.createNewAnnouncement("Ogłoszenie testowe");
         test.log(Status.PASS, "Creating new announcement done", SeleniumHelper.getScreenshot(driver));
 
@@ -29,9 +31,15 @@ public class AnnouncementTest extends BaseTest {
 
     @Test
     public void deleteAnnouncementTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Deleting Announcement Test");
         AnnouncementPage announcementPage = new AnnouncementPage(driver);
+        test.log(Status.PASS, "Login done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Entering announcement module ", SeleniumHelper.getScreenshot(driver));
         announcementPage.enterAnnouncementModule();
+        test.log(Status.PASS, "Entering announcement module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Deleting announcement", SeleniumHelper.getScreenshot(driver));
         announcementPage.deleteFirstAnnouncement();
+        test.log(Status.PASS, "Deleting announcement done", SeleniumHelper.getScreenshot(driver));
 
     }
 }
