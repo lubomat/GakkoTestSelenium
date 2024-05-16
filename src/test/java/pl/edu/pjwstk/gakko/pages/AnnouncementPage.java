@@ -28,6 +28,9 @@ public class AnnouncementPage {
     @FindBy(css = "div.alert-text")
     public WebElement savedSuccessfullyMessage;
 
+    @FindBy(css = "div.alert-text")
+    public WebElement deletedSuccessfullyMessage;
+
     @FindBy(css = "button.swal2-confirm.swal2-styled")
     private WebElement deleteAgreeButton;
 
@@ -72,5 +75,9 @@ public class AnnouncementPage {
         logger.info("Clicking the delete button");
         deleteAgreeButton.click();
         logger.info("Clicking the delete button done");
+    }
+
+    public String getDeletingSuccessfullyMessage() {
+        return deletedSuccessfullyMessage.getText();
     }
 }

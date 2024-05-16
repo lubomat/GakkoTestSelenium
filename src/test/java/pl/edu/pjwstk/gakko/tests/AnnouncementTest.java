@@ -10,7 +10,6 @@ import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 import java.io.IOException;
 
 public class AnnouncementTest extends BaseTest {
-
     @Test
     public void createAnnouncementTest() throws IOException {
 
@@ -26,9 +25,7 @@ public class AnnouncementTest extends BaseTest {
 
         Assert.assertTrue(announcementPage.savedSuccessfullyMessage.isDisplayed());
         Assert.assertEquals(announcementPage.getSuccessfullyMessage(), "Ogłoszenie zostało zapisane pomyślnie");
-
     }
-
     @Test
     public void deleteAnnouncementTest() throws IOException {
         ExtentTest test = extentReports.createTest("Deleting Announcement Test");
@@ -41,5 +38,7 @@ public class AnnouncementTest extends BaseTest {
         announcementPage.deleteFirstAnnouncement();
         test.log(Status.PASS, "Deleting announcement done", SeleniumHelper.getScreenshot(driver));
 
+        Assert.assertTrue(announcementPage.deletedSuccessfullyMessage.isDisplayed());
+        Assert.assertEquals(announcementPage.getDeletingSuccessfullyMessage(),"Ogłoszenie zostało usunięte pomyślnie");
     }
 }
