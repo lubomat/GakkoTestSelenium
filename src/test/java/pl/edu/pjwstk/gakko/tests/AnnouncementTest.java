@@ -26,4 +26,12 @@ public class AnnouncementTest extends BaseTest {
         Assert.assertEquals(announcementPage.getSuccessfullyMessage(), "Ogłoszenie zostało zapisane pomyślnie");
 
     }
+
+    @Test
+    public void deleteAnnouncementTest() throws IOException {
+        AnnouncementPage announcementPage = new AnnouncementPage(driver);
+        announcementPage.enterAnnouncementModule();
+        announcementPage.deleteFirstAnnouncement();
+
+    }
 }

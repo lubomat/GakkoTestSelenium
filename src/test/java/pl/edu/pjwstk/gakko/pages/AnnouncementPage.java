@@ -2,10 +2,12 @@ package pl.edu.pjwstk.gakko.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 
 public class AnnouncementPage {
     @FindBy(xpath = "//span[text()='Ogłoszenia']")
@@ -25,6 +27,9 @@ public class AnnouncementPage {
 
     @FindBy(css = "div.alert-text")
     public WebElement savedSuccessfullyMessage;
+
+    @FindBy(css = "button.swal2-confirm.swal2-styled")
+    private WebElement deleteAgreeButton;
 
     private WebDriver driver;
 
@@ -54,5 +59,13 @@ public class AnnouncementPage {
 
     public String getSuccessfullyMessage() {
         return savedSuccessfullyMessage.getText();
+    }
+
+    public void deleteFirstAnnouncement() {
+        String xpath = String.format("//tr[@data-row='0']//a[contains(@class," +
+                " 'delete-link')]//i[contains(@class, 'la-trash')]");
+        SeleniumHelper.waitForElementToExist(driver, By.xpath(xpath));
+        driver.findElement(By.xpath(xpath)).click();
+        deleteAgreeButton.click();
     }
 }
