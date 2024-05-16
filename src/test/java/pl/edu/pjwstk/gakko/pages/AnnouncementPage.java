@@ -34,6 +34,9 @@ public class AnnouncementPage {
     @FindBy(css = "button.swal2-confirm.swal2-styled")
     private WebElement deleteAgreeButton;
 
+    @FindBy(xpath = "//td[contains(@class, 'kt-datatable__cell--center')]//a[@class='btn btn-sm btn-clean btn-icon btn-icon-md'][1]")
+    private WebElement editButton;
+
     private WebDriver driver;
 
     public AnnouncementPage(WebDriver driver) {
@@ -51,12 +54,16 @@ public class AnnouncementPage {
 
     public void createNewAnnouncement(String note) {
         logger.info("Creating new announcement");
+        logger.info("Click the add new announcement button");
         addNewAnnouncementButton.click();
+        logger.info("Click the add new announcement button done");
         announcementOptionButton.click();
         logger.info("Entering note to new announcement");
         noteAnnouncementInput.sendKeys(note);
         logger.info("Entering note to new announcement done");
+        logger.info("Click the save button");
         saveButton.click();
+        logger.info("Click the save button done");
         logger.info("Creating new announcement done");
     }
 
@@ -72,12 +79,30 @@ public class AnnouncementPage {
         SeleniumHelper.waitForElementToExist(driver, By.xpath(xpath));
         driver.findElement(By.xpath(xpath)).click();
         logger.info("Marking the checkbox done");
-        logger.info("Clicking the delete button");
+        logger.info("Click the delete button");
         deleteAgreeButton.click();
-        logger.info("Clicking the delete button done");
+        logger.info("Click the delete button done");
+        logger.info("Deleting announcement done");
     }
 
     public String getDeletingSuccessfullyMessage() {
         return deletedSuccessfullyMessage.getText();
+    }
+
+    public void editAnnouncement(String editedNote) {
+        logger.info("Editing announcement note");
+        logger.info("Click the edit button");
+        editButton.click();
+        logger.info("Click the edit button done");
+        logger.info("Clearing the announcement note");
+        noteAnnouncementInput.clear();
+        logger.info("Clearing the announcement note done");
+        logger.info("Entering edited note to announcement");
+        noteAnnouncementInput.sendKeys(editedNote);
+        logger.info("Entering the new note to announcement done");
+        logger.info("Click the save button");
+        saveButton.click();
+        logger.info("Click the save button done");
+        logger.info("Editing announcement note done");
     }
 }

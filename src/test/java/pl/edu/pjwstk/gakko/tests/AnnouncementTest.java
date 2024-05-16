@@ -10,7 +10,7 @@ import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 import java.io.IOException;
 
 public class AnnouncementTest extends BaseTest {
-    @Test
+    @Test(priority = 0)
     public void createAnnouncementTest() throws IOException {
 
         ExtentTest test = extentReports.createTest("Creating Announcement Test");
@@ -26,7 +26,7 @@ public class AnnouncementTest extends BaseTest {
         Assert.assertTrue(announcementPage.savedSuccessfullyMessage.isDisplayed());
         Assert.assertEquals(announcementPage.getSuccessfullyMessage(), "Ogłoszenie zostało zapisane pomyślnie");
     }
-    @Test
+    @Test(priority = 2)
     public void deleteAnnouncementTest() throws IOException {
         ExtentTest test = extentReports.createTest("Deleting Announcement Test");
         AnnouncementPage announcementPage = new AnnouncementPage(driver);
@@ -40,5 +40,17 @@ public class AnnouncementTest extends BaseTest {
 
         Assert.assertTrue(announcementPage.deletedSuccessfullyMessage.isDisplayed());
         Assert.assertEquals(announcementPage.getDeletingSuccessfullyMessage(),"Ogłoszenie zostało usunięte pomyślnie");
+    }
+    @Test(priority = 1)
+    public void editAnnouncementTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Editing Announcement Test");
+        AnnouncementPage announcementPage = new AnnouncementPage(driver);
+        test.log(Status.PASS, "Login done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Entering announcement module ", SeleniumHelper.getScreenshot(driver));
+        announcementPage.enterAnnouncementModule();
+        test.log(Status.PASS, "Entering announcement module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Editing announcement", SeleniumHelper.getScreenshot(driver));
+        announcementPage.editAnnouncement("Ogłoszenie edytowane");
+        test.log(Status.PASS, "Editing announcement done", SeleniumHelper.getScreenshot(driver));
     }
 }
