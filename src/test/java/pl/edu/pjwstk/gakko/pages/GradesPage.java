@@ -17,7 +17,7 @@ public class GradesPage {
     private WebElement addNewGradeButton;
 
     @FindBy(xpath = "//span[text()='Dodaj bezpośrednio w kursie']")
-    private WebElement gradeOptionButton;
+    private WebElement addNewGradeOptionButton;
 
     @FindBy(id = "Grade_Name")
     private WebElement gradeNameInput;
@@ -44,12 +44,22 @@ public class GradesPage {
     }
 
     public void addNewGrade(String name) {
+        logger.info("Click on add new grade button");
         addNewGradeButton.click();
-        gradeOptionButton.click();
+        logger.info("Click on add new grade button done");
+        logger.info("Click on add new grade option button");
+        addNewGradeOptionButton.click();
+        logger.info("Click on add new grade option button done");
+        logger.info("Enter name");
         gradeNameInput.sendKeys(name);
+        logger.info("Enter name done");
+        logger.info("Select numeric");
         Select select = new Select(gradeNumericSelect);
         select.selectByValue("true");
+        logger.info("Select numeric done");
+        logger.info("Click save button");
         saveButton.click();
+        logger.info("Click save button done");
     }
 
     public String getMessage() {
