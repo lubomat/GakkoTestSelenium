@@ -7,7 +7,7 @@ import pl.edu.pjwstk.gakko.pages.GradesPage;
 public class GradesTest extends BaseTest{
 
     @Test
-    public void gradeTest() {
+    public void addGradeTest() {
 
         int randomNumber = (int) (Math.random()*1000);
 
@@ -15,8 +15,20 @@ public class GradesTest extends BaseTest{
         gradesPage.enterGradePage();
         gradesPage.addNewGrade("Nazwa Testowa" + randomNumber);
 
-        Assert.assertTrue(gradesPage.gradesAddSuccessfullyMessage.isDisplayed());
-        Assert.assertEquals(gradesPage.getSuccessfullyMessage(),"Ocena została zapisana pomyślnie");
+        Assert.assertTrue(gradesPage.gradesAddMessage.isDisplayed());
+        Assert.assertEquals(gradesPage.getMessage(),"Ocena została zapisana pomyślnie");
+
+    }
+
+    @Test
+    public void addGradeWithSameNameTest() {
+
+        GradesPage gradesPage = new GradesPage(driver);
+        gradesPage.enterGradePage();
+        gradesPage.addNewGrade("Nazwa Testowa");
+
+        Assert.assertTrue(gradesPage.gradesAddMessage.isDisplayed());
+        Assert.assertEquals(gradesPage.getMessage(),"Ocena o identycznych parametrach już istnieje");
 
     }
 

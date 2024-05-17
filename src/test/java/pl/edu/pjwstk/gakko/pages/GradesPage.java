@@ -29,7 +29,7 @@ public class GradesPage {
     private WebElement saveButton;
 
     @FindBy(css = "div.alert-text")
-    public WebElement gradesAddSuccessfullyMessage;
+    public WebElement gradesAddMessage;
 
     private WebDriver driver;
 
@@ -52,8 +52,8 @@ public class GradesPage {
         saveButton.click();
     }
 
-    public String getSuccessfullyMessage() {
-        return gradesAddSuccessfullyMessage.getText();
+    public String getMessage() {
+        return gradesAddMessage.getText();
     }
 
 }
