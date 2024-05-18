@@ -25,7 +25,7 @@ public class GradesTest extends BaseTest{
         gradesPage.addNewGrade("Nazwa Testowa" + randomNumber);
         test.log(Status.PASS,"Creating new grade Done", SeleniumHelper.getScreenshot(driver));
 
-        Assert.assertTrue(gradesPage.gradesAddMessage.isDisplayed());
+        Assert.assertTrue(gradesPage.gradesAlertMessage.isDisplayed());
         Assert.assertEquals(gradesPage.getMessage(),"Ocena została zapisana pomyślnie");
 
     }
@@ -41,12 +41,14 @@ public class GradesTest extends BaseTest{
         gradesPage.addNewGrade("Nazwa Testowa");
         test.log(Status.PASS,"Creating new grade with existing name Done", SeleniumHelper.getScreenshot(driver));
 
-        Assert.assertTrue(gradesPage.gradesAddMessage.isDisplayed());
+        Assert.assertTrue(gradesPage.gradesAlertMessage.isDisplayed());
         Assert.assertEquals(gradesPage.getMessage(),"Ocena o identycznych parametrach już istnieje");
 
     }
     @Test
     public void editGradeInLastRowTest() throws IOException {
+
+        int randomNumber = (int) (Math.random()*1000);
 
         ExtentTest test = extentReports.createTest("Editing Grade Test");
         GradesPage gradesPage = new GradesPage(driver);
@@ -54,8 +56,11 @@ public class GradesTest extends BaseTest{
         gradesPage.enterGradePage();
         test.log(Status.PASS,"Entering grades page done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS,"Click edit button", SeleniumHelper.getScreenshot(driver));
-        gradesPage.editGradeInLastRow("Nazwa Testowa Edytowana");
+        gradesPage.editGradeInLastRow("Nazwa Testowa Edytowana" + randomNumber);
         test.log(Status.PASS,"Click edit button done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(gradesPage.gradesAlertMessage.isDisplayed());
+        Assert.assertEquals(gradesPage.getMessage(),"Ocena została zapisana pomyślnie");
 
     }
 
