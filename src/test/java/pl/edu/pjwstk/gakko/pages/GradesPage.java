@@ -34,12 +34,22 @@ public class GradesPage {
     @FindBy(css = "div.alert-text")
     public WebElement gradesAlertMessage;
 
+    @FindBy(css = "tr.kt-datatable__row")
+    private List<WebElement> tableRows;
+
+    @FindBy(css = "a.delete-link")
+    private WebElement deleteLink;
+
+    @FindBy(css = "button.swal2-confirm.swal2-styled")
+    private WebElement deleteAgreeButton;
+
     private WebDriver driver;
 
     public GradesPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
+
     private static final Logger logger = LogManager.getLogger();
 
     public void enterGradePage() {
@@ -80,11 +90,33 @@ public class GradesPage {
 
     public void editGradeInLastRow(String editedName) {
         clickEditButtonInLastRow();
+        logger.info("Clear grade name");
         gradeNameInput.clear();
+        logger.info("Clear grade name done");
+        logger.info("Enter new grade name");
         gradeNameInput.sendKeys(editedName);
+        logger.info("Enter new grade name done");
         logger.info("Click on save button");
         saveButton.click();
         logger.info("Click on save button done");
     }
+
+    public void clickDeleteGradeInLastRow() {
+        if (!tableRows.isEmpty()) {
+            WebElement lastRow = tableRows.get(tableRows.size() - 1);
+            WebElement deleteLinkElement = lastRow.findElement(By.cssSelector("a.delete-link"));
+            deleteLinkElement.click();
+        }
+    }
+
+    public void deleteGradeInLastRow() {
+        logger.info("Find last grade on list and click delete grade button");
+        clickDeleteGradeInLastRow();
+        logger.info("Find last grade on list and click delete grade button done");
+        logger.info("Click Yes, delete!");
+        deleteAgreeButton.click();
+        logger.info("Click Yes, delete! done");
+    }
+
 
 }
