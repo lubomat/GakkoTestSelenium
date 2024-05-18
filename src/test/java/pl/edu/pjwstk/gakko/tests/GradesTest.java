@@ -29,7 +29,6 @@ public class GradesTest extends BaseTest{
         Assert.assertEquals(gradesPage.getMessage(),"Ocena została zapisana pomyślnie");
 
     }
-
     @Test
     public void addGradeWithExistingNameTest() throws IOException {
 
@@ -44,6 +43,19 @@ public class GradesTest extends BaseTest{
 
         Assert.assertTrue(gradesPage.gradesAddMessage.isDisplayed());
         Assert.assertEquals(gradesPage.getMessage(),"Ocena o identycznych parametrach już istnieje");
+
+    }
+    @Test
+    public void editGradeInLastRowTest() throws IOException {
+
+        ExtentTest test = extentReports.createTest("Editing Grade Test");
+        GradesPage gradesPage = new GradesPage(driver);
+        test.log(Status.PASS,"Entering grades page", SeleniumHelper.getScreenshot(driver));
+        gradesPage.enterGradePage();
+        test.log(Status.PASS,"Entering grades page done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS,"Click edit button", SeleniumHelper.getScreenshot(driver));
+        gradesPage.editGradeInLastRow("Nazwa Testowa Edytowana");
+        test.log(Status.PASS,"Click edit button done", SeleniumHelper.getScreenshot(driver));
 
     }
 

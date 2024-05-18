@@ -2,11 +2,14 @@ package pl.edu.pjwstk.gakko.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class GradesPage {
 
@@ -64,6 +67,24 @@ public class GradesPage {
 
     public String getMessage() {
         return gradesAddMessage.getText();
+    }
+
+    public void clickEditButtonInLastRow() {
+        logger.info("Find last grade on list and click on edit grade button");
+        List<WebElement> rows = driver.findElements(By.cssSelector("tr.kt-datatable__row"));
+        WebElement lastRow = rows.get(rows.size() - 1);
+        WebElement editButton = lastRow.findElement(By.cssSelector("a[href*='/grades/upsert/']"));
+        editButton.click();
+        logger.info("Find last grade on list and click on edit grade button done");
+    }
+
+    public void editGradeInLastRow(String editedName) {
+        clickEditButtonInLastRow();
+        gradeNameInput.clear();
+        gradeNameInput.sendKeys(editedName);
+        logger.info("Click on save button");
+        saveButton.click();
+        logger.info("Click on save button done");
     }
 
 }
