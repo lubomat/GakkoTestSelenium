@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class GradesTest extends BaseTest {
 
-    @Test
+    @Test(priority = 0)
     public void addGradeTest() throws IOException {
 
         int randomNumber = (int) (Math.random() * 1000);
@@ -30,7 +30,7 @@ public class GradesTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 2)
     public void addGradeWithExistingNameTest() throws IOException {
 
         ExtentTest test = extentReports.createTest("Creating New Grade With Existing Name Test");
@@ -47,7 +47,7 @@ public class GradesTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 1)
     public void editGradeInLastRowTest() throws IOException {
 
         int randomNumber = (int) (Math.random() * 1000);
@@ -58,7 +58,7 @@ public class GradesTest extends BaseTest {
         gradesPage.enterGradePage();
         test.log(Status.PASS, "Entering grades page done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Click edit button", SeleniumHelper.getScreenshot(driver));
-        gradesPage.editGradeInLastRow("Nazwa Testowa Edytowana" + randomNumber);
+        gradesPage.editGradeInLastRow("Nazwa Testowa");
         test.log(Status.PASS, "Click edit button done", SeleniumHelper.getScreenshot(driver));
 
         Assert.assertTrue(gradesPage.gradesAlertMessage.isDisplayed());
@@ -66,7 +66,7 @@ public class GradesTest extends BaseTest {
 
     }
 
-    @Test
+    @Test(priority = 3)
     public void deleteGradeInLastRowTest() throws IOException {
 
         ExtentTest test = extentReports.createTest("Deleting Grade Test");
