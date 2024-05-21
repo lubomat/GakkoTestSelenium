@@ -11,10 +11,12 @@ import java.io.IOException;
 
 public class ForumTest extends BaseTest {
 
+    private String getRandomTitleName() {
+        int randomNumber = (int) (Math.random() * 1000);
+        return "Nowy tytuł testowy" + randomNumber;
+    }
     @Test(priority = 0)
     public void createNewThreadTest() throws IOException {
-
-        int randomNumber = (int) (Math.random() * 1000);
 
         ExtentTest test = extentReports.createTest("Creating New Thread Test");
         ForumPage forumPage = new ForumPage(driver);
@@ -22,7 +24,10 @@ public class ForumTest extends BaseTest {
         forumPage.enterForumPage();
         test.log(Status.PASS, "Enter forum page done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Entering title and note", SeleniumHelper.getScreenshot(driver));
-        forumPage.CreateNewThread("Nowy tytuł testowy" + randomNumber, "Testowa treść wiadomości");
+
+        String titleName = getRandomTitleName();
+
+        forumPage.CreateNewThread(titleName, "Testowa treść wiadomości");
         test.log(Status.PASS, "Entering title and note done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Creating new thread test done", SeleniumHelper.getScreenshot(driver));
 
