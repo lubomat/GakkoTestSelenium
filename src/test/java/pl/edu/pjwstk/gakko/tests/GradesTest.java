@@ -11,10 +11,12 @@ import java.io.IOException;
 
 public class GradesTest extends BaseTest {
 
+    private String getRandomGradeName() {
+        int randomNumber = (int) (Math.random() * 1000);
+        return "Nazwa Testowa" + randomNumber;
+    }
     @Test(priority = 0)
     public void addGradeTest() throws IOException {
-
-        int randomNumber = (int) (Math.random() * 1000);
 
         ExtentTest test = extentReports.createTest("Creating New Grade Test");
         GradesPage gradesPage = new GradesPage(driver);
@@ -22,7 +24,10 @@ public class GradesTest extends BaseTest {
         gradesPage.enterGradePage();
         test.log(Status.PASS, "Entering grades page done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Creating new grade", SeleniumHelper.getScreenshot(driver));
-        gradesPage.addNewGrade("Nazwa Testowa" + randomNumber);
+
+        String gradeName = getRandomGradeName();
+
+        gradesPage.addNewGrade(gradeName);
         test.log(Status.PASS, "Creating new grade Done", SeleniumHelper.getScreenshot(driver));
 
         Assert.assertTrue(gradesPage.gradesAlertMessage.isDisplayed());
@@ -49,8 +54,6 @@ public class GradesTest extends BaseTest {
 
     @Test(priority = 1)
     public void editGradeInLastRowTest() throws IOException {
-
-        int randomNumber = (int) (Math.random() * 1000);
 
         ExtentTest test = extentReports.createTest("Editing Grade Test");
         GradesPage gradesPage = new GradesPage(driver);

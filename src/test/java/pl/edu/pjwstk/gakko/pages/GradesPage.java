@@ -100,13 +100,14 @@ public class GradesPage {
         saveButton.click();
         logger.info("Click on save button done");
     }
-
     public void clickDeleteGradeInLastRow() {
-        if (!tableRows.isEmpty()) {
-            WebElement lastRow = tableRows.get(tableRows.size() - 1);
-            WebElement deleteLinkElement = lastRow.findElement(By.cssSelector("a.delete-link"));
-            deleteLinkElement.click();
+        if (tableRows.isEmpty()) {
+            return;
         }
+
+        WebElement lastRow = tableRows.get(tableRows.size() - 1);
+        WebElement deleteLinkElement = lastRow.findElement(By.cssSelector("a.delete-link"));
+        deleteLinkElement.click();
     }
 
     public void deleteGradeInLastRow() {
