@@ -42,11 +42,11 @@ public class TasksPage {
     @FindBy(xpath = "//span[text()='Zadanie 2']")
     private WebElement secondTaskButton;
 
-    @FindBy(css = "textarea[name='Tasks[1][Content]']")
-    private WebElement secondNoteInput;
-
     @FindBy(css = "button.btn.btn-block")
     private WebElement addATaskButton;
+
+    @FindBy(css = "textarea[name='Tasks[1][Content]']")
+    private WebElement secondNoteInput;
 
     @FindBy(id = "btnUpsertSubmit")
     private WebElement saveButton;
@@ -80,6 +80,32 @@ public class TasksPage {
         firstTaskButton.click();
         noteInput.sendKeys(taskNote);
         saveButton.click();
+    }
 
+    public void addNewTaskPoolWithMultipleTasks(String taskName, String gradeName,
+                               String dateFrom, String dateTo,
+                               String taskNote, String secondTaskNote ) throws InterruptedException {
+        addNewTaskPoolButton.click();
+        addDirectlyInTheCourseButton.click();
+        taskPoolNameInput.sendKeys(taskName);
+        gradeNameInput.sendKeys(gradeName);
+        taskDateFromInput.clear();
+        taskDateFromInput.sendKeys(dateFrom);
+        taskDateToInput.clear();
+        taskDateToInput.sendKeys(dateTo);
+        background.click();
+        firstTaskButton.click();
+        noteInput.sendKeys(taskNote);
+        addATaskButton.click();
+        Thread.sleep(2000);  /** dopiero po dodaniu waita udaje sie kliknac na
+                                     utworzone zadanie 2 ale selektor/input "div.note-editable"
+                                    do wpisania tresci ma taką sama nazwe co input do zadanie 1
+                                    i przez to tresc ktora chce wprowadzic do zadania 2 wpisuje sie
+                                    do 1. W poprzednich testach bez problemu uzywajac tego samego
+                                    selektora moglem uzupelniac inne inputy */
+        secondTaskButton.click();
+        noteInput.sendKeys(secondTaskNote);
+//        secondNoteInput.sendKeys(secondTaskNote);
+//        saveButton.click();
     }
 }
