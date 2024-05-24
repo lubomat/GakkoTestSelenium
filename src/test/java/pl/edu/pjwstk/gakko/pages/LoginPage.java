@@ -17,6 +17,13 @@ public class LoginPage {
     @FindBy(id = "submitButton")
     private WebElement submitButton;
 
+    @FindBy(css = "div.kt-header__topbar-wrapper")
+    private WebElement languageButton;
+
+    @FindBy(xpath = "//a[@href='/change-language/pl-PL']")
+    private WebElement polishLanguageButton;
+
+
     private WebDriver driver;
 
     private static final Logger logger = LogManager.getLogger();
@@ -32,5 +39,12 @@ public class LoginPage {
         passwordInput.sendKeys(password);
         submitButton.click();
         logger.info("entering login and password done");
+    }
+
+    public void chooseLanguage() {
+        logger.info("choose language");
+        languageButton.click();
+        polishLanguageButton.click();
+        logger.info("choose language to polish done");
     }
 }

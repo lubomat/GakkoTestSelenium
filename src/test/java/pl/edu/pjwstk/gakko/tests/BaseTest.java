@@ -51,6 +51,7 @@ public class BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         loginPage.logIn(login, password);
+        loginPage.chooseLanguage();
     }
 
     @AfterMethod
