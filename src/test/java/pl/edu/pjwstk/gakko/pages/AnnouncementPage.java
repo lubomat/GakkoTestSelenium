@@ -10,13 +10,13 @@ import org.openqa.selenium.support.PageFactory;
 import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 
 public class AnnouncementPage {
-    @FindBy(xpath = "//span[text()='Ogłoszenia']")
+    @FindBy(xpath = "//a[@href='/edux/7984/announcements']")
     private WebElement announcementButton;
 
-    @FindBy(xpath = "//span[text()='Dodaj nowe ogłoszenie']")
+    @FindBy(css = "button.btn-brand")
     private WebElement addNewAnnouncementButton;
 
-    @FindBy(xpath = "//span[text()='Dodaj bezpośrednio w kursie']")
+    @FindBy(xpath = "//a[@href='/edux/7984/announcements/upsert']")
     private WebElement announcementOptionButton;
 
     @FindBy(className = "note-editable")
