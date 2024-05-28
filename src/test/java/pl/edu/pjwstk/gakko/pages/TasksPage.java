@@ -71,21 +71,47 @@ public class TasksPage {
     public void addNewTaskPoolWithMultipleTasks(String taskName, String gradeName,
                                String dateFrom, String dateTo,
                                String firstTaskNote, String secondTaskNote ) throws InterruptedException {
+        logger.info("Creating new Task pool with multiple tasks");
+        logger.info("Clicking add new task button");
         addNewTaskPoolButton.click();
+        logger.info("Clicking add new task button done");
+        logger.info("Clicking directly in the course button");
         addDirectlyInTheCourseButton.click();
+        logger.info("Clicking directly in the course button done");
+        logger.info("Entering task pool name");
         taskPoolNameInput.sendKeys(taskName);
+        logger.info("Entering task pool name done");
+        logger.info("Entering grade name");
         gradeNameInput.sendKeys(gradeName);
+        logger.info("Entering grade name done");
+        logger.info("Entering date from");
         taskDateFromInput.clear();
         taskDateFromInput.sendKeys(dateFrom);
+        logger.info("Entering date from done");
+        logger.info("Entering date to");
         taskDateToInput.clear();
         taskDateToInput.sendKeys(dateTo);
+        logger.info("Entering date to done");
         background.click();
+        logger.info("Opening first task");
         firstTaskButton.click();
+        logger.info("Opening first task done");
+        logger.info("Entering first task note ");
         firstTaskFieldInput.sendKeys(firstTaskNote);
+        logger.info("Entering first task note done");
+        logger.info("Creating second task");
         addATaskButton.click();
+        logger.info("Creating second task done");
+        logger.info("Opening second task note");
         Thread.sleep(500);
         secondTaskButton.click();
+        logger.info("Opening second task note done");
+        logger.info("Entering second task note");
         secondTaskFieldInput.sendKeys(secondTaskNote);
+        logger.info("Entering first task note done");
+        logger.info("Clicking save button");
         saveButton.click();
+        logger.info("Clicking save button done");
+        logger.info("Create new Task pool with multiple tasks done");
     }
 }
