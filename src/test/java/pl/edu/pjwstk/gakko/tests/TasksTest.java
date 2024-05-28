@@ -2,13 +2,14 @@ package pl.edu.pjwstk.gakko.tests;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pl.edu.pjwstk.gakko.pages.TasksPage;
 import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 
 import java.io.IOException;
 
-public class TasksTest extends BaseTest{
+public class TasksTest extends BaseTest {
 
     @Test
     public void addTaskWithMultipleTasksTest() throws InterruptedException, IOException {
@@ -28,6 +29,8 @@ public class TasksTest extends BaseTest{
                 "drugie zadanie testowe");
         test.log(Status.PASS, "Creating Task pool with multiple tasks done", SeleniumHelper.getScreenshot(driver));
 
-    }
+        Assert.assertTrue(tasksPage.SuccessfullyMessage.isDisplayed());
+        Assert.assertEquals(tasksPage.getSuccessfullyMessage(), "Pula zadań została zapisana pomyślnie");
 
+    }
 }

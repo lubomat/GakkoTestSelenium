@@ -53,6 +53,9 @@ public class TasksPage {
     @FindBy(id = "btnUpsertSubmit")
     private WebElement saveButton;
 
+    @FindBy(css = "div.alert-text")
+    public WebElement SuccessfullyMessage;
+
 
     private WebDriver driver;
 
@@ -113,5 +116,9 @@ public class TasksPage {
         saveButton.click();
         logger.info("Clicking save button done");
         logger.info("Create new Task pool with multiple tasks done");
+    }
+
+    public String getSuccessfullyMessage() {
+        return SuccessfullyMessage.getText();
     }
 }
