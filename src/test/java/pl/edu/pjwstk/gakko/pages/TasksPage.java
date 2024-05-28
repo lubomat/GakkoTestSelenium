@@ -56,6 +56,12 @@ public class TasksPage {
     @FindBy(css = "div.alert-text")
     public WebElement SuccessfullyMessage;
 
+    @FindBy(xpath = "(//a[contains(@class, 'delete-link')])[1]")
+    private WebElement firstDeleteTaskPoolButton;
+
+    @FindBy(css = "button.swal2-confirm")
+    private WebElement confirmButton;
+
 
     private WebDriver driver;
 
@@ -120,5 +126,16 @@ public class TasksPage {
 
     public String getSuccessfullyMessage() {
         return SuccessfullyMessage.getText();
+    }
+
+    public void deleteTaskPoolFirstOnList() {
+        logger.info("Deleting task pool");
+        logger.info("Clicking delete task pool button");
+        firstDeleteTaskPoolButton.click();
+        logger.info("Clicking delete task pool button done");
+        logger.info("Clicking confirm button ");
+        confirmButton.click();
+        logger.info("Clicking confirm button done");
+        logger.info("Deleting task pool done");
     }
 }

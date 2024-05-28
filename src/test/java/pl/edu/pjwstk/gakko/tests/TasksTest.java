@@ -16,9 +16,9 @@ public class TasksTest extends BaseTest {
 
         ExtentTest test = extentReports.createTest("Creating Task pool With Multiple Tasks Test");
         TasksPage tasksPage = new TasksPage(driver);
-        test.log(Status.PASS, "Entering Tasks module", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Entering to Tasks module", SeleniumHelper.getScreenshot(driver));
         tasksPage.enterTasksModule();
-        test.log(Status.PASS, "Entering Tasks module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Entering to Tasks module done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Creating Task pool with multiple tasks", SeleniumHelper.getScreenshot(driver));
         tasksPage.addNewTaskPoolWithMultipleTasks(
                 "Testowa nazwa puli",
@@ -31,6 +31,25 @@ public class TasksTest extends BaseTest {
 
         Assert.assertTrue(tasksPage.SuccessfullyMessage.isDisplayed());
         Assert.assertEquals(tasksPage.getSuccessfullyMessage(), "Pula zadań została zapisana pomyślnie");
+
+    }
+
+    @Test
+    public void deleteTaskPoolFirstOnListTest() throws IOException {
+
+        ExtentTest test = extentReports.createTest("Creating Task pool With Multiple Tasks Test");
+        TasksPage tasksPage = new TasksPage(driver);
+        test.log(Status.PASS, "Entering to Tasks module", SeleniumHelper.getScreenshot(driver));
+        tasksPage.enterTasksModule();
+        test.log(Status.PASS, "Entering to Tasks module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Deleting Task pool first on list", SeleniumHelper.getScreenshot(driver));
+        tasksPage.deleteTaskPoolFirstOnList();
+        test.log(Status.PASS, "Deleting Task pool first on list done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(tasksPage.SuccessfullyMessage.isDisplayed());
+        Assert.assertEquals(tasksPage.getSuccessfullyMessage(),"Pula zadań została usunięta pomyślnie");
+
+
 
     }
 }
