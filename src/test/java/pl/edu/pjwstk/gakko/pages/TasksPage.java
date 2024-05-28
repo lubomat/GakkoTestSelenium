@@ -2,10 +2,12 @@ package pl.edu.pjwstk.gakko.pages;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 
 public class TasksPage {
 
@@ -36,8 +38,8 @@ public class TasksPage {
     @FindBy(xpath = "//span[text()='Zadanie 1']")
     private WebElement firstTaskButton;
 
-    @FindBy(css = "div.note-editable")
-    private WebElement noteInput;
+    @FindBy(xpath = "(//div[@class='note-editable'])[1]")
+    private WebElement firstTaskFieldInput;
 
     @FindBy(css = "button.btn.btn-block")
     private WebElement addATaskButton;
@@ -65,26 +67,10 @@ public class TasksPage {
         tasksButton.click();
     }
 
-    public void addNewTaskPool(String taskName, String gradeName,
-                               String dateFrom, String dateTo,
-                               String taskNote ) {
-        addNewTaskPoolButton.click();
-        addDirectlyInTheCourseButton.click();
-        taskPoolNameInput.sendKeys(taskName);
-        gradeNameInput.sendKeys(gradeName);
-        taskDateFromInput.clear();
-        taskDateFromInput.sendKeys(dateFrom);
-        taskDateToInput.clear();
-        taskDateToInput.sendKeys(dateTo);
-        background.click();
-        firstTaskButton.click();
-        noteInput.sendKeys(taskNote);
-        saveButton.click();
-    }
 
     public void addNewTaskPoolWithMultipleTasks(String taskName, String gradeName,
                                String dateFrom, String dateTo,
-                               String taskNote, String secondTaskNote ) throws InterruptedException {
+                               String firstTaskNote, String secondTaskNote ) throws InterruptedException {
         addNewTaskPoolButton.click();
         addDirectlyInTheCourseButton.click();
         taskPoolNameInput.sendKeys(taskName);
@@ -95,9 +81,9 @@ public class TasksPage {
         taskDateToInput.sendKeys(dateTo);
         background.click();
         firstTaskButton.click();
-        noteInput.sendKeys(taskNote);
+        firstTaskFieldInput.sendKeys(firstTaskNote);
         addATaskButton.click();
-        Thread.sleep(2000);
+        Thread.sleep(500);
         secondTaskButton.click();
         secondTaskFieldInput.sendKeys(secondTaskNote);
         saveButton.click();
