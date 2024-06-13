@@ -56,7 +56,7 @@ public class BaseTest {
 
     @AfterMethod
     public void afterSetup() {
-//        driver.quit();
+        driver.quit();
     }
 }
 
