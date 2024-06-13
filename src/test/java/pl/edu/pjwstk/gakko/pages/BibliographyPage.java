@@ -60,20 +60,35 @@ public class BibliographyPage {
     }
 
     public void uploadCoverFile(String filePath) {
+        logger.info("Uploading file");
         coverFileInput.sendKeys(filePath);
+        logger.info("Uploading file done");
     }
 
     public void createBook(String title, String author, String publisher,
                            String comment) {
+        logger.info("Creating new book");
         addNewBookButton.click();
         addInTheCourseButton.click();
+        logger.info("Entering title");
         titleInput.sendKeys(title);
+        logger.info("Entering title done");
+        logger.info("Entering author name");
         authorInput.sendKeys(author);
+        logger.info("Entering author name done");
+        logger.info("Entering publisher name");
         publisherInput.sendKeys(publisher);
+        logger.info("Entering publisher name done");
+        logger.info("Entering comment");
         commentInput.sendKeys(comment);
+        logger.info("Entering comment done");
     }
     public void clickSave() {
+        logger.info("Clicking save");
         saveButton.click();
+        logger.info("Clicking save done");
+        logger.info("Creating new book done");
+
     }
 
     public String getMessage() {
