@@ -41,7 +41,13 @@ public class BibliographyPage {
     private WebElement saveButton;
 
     @FindBy(css = "div.alert-text")
-    public WebElement bookAddedAlertMessage;
+    public WebElement bookAlertMessage;
+
+    @FindBy(xpath = "(//a[@class='btn btn-sm btn-clean btn-icon btn-icon-md delete-link'])[1]\n")
+    private WebElement deleteBookButton;
+
+    @FindBy(css = "button.swal2-confirm.swal2-styled")
+    private WebElement confirmDeleteButton;
 
     private WebDriver driver;
 
@@ -92,6 +98,13 @@ public class BibliographyPage {
     }
 
     public String getMessage() {
-        return bookAddedAlertMessage.getText();
+        return bookAlertMessage.getText();
+    }
+
+    public void deleteBook() {
+        logger.info("Deleting book");
+        deleteBookButton.click();
+        confirmDeleteButton.click();
+        logger.info("Deleting book done");
     }
 }

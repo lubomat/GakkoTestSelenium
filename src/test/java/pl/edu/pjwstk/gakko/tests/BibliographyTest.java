@@ -36,7 +36,7 @@ public class BibliographyTest extends BaseTest {
         bibliographyPage.clickSave();
         test.log(Status.PASS, "Creating New Book Test Done", SeleniumHelper.getScreenshot(driver));
 
-        Assert.assertTrue(bibliographyPage.bookAddedAlertMessage.isDisplayed());
+        Assert.assertTrue(bibliographyPage.bookAlertMessage.isDisplayed());
         Assert.assertEquals(bibliographyPage.getMessage(),"Książka została zapisana pomyślnie");
     }
 
@@ -63,8 +63,25 @@ public class BibliographyTest extends BaseTest {
         bibliographyPage.clickSave();
         test.log(Status.PASS, "Creating Same Book Test Done", SeleniumHelper.getScreenshot(driver));
 
-        Assert.assertTrue(bibliographyPage.bookAddedAlertMessage.isDisplayed());
+        Assert.assertTrue(bibliographyPage.bookAlertMessage.isDisplayed());
         Assert.assertEquals(bibliographyPage.getMessage(),"Książka o identycznych parametrach już istnieje");
+    }
+
+    @Test
+    public void deleteBookTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Deleting Book Test");
+        BibliographyPage bibliographyPage = new BibliographyPage(driver);
+        test.log(Status.PASS, "Entering bibliography module", SeleniumHelper.getScreenshot(driver));
+        bibliographyPage.enterBibliographyModule();
+        test.log(Status.PASS, "Entering bibliography module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Deleting book", SeleniumHelper.getScreenshot(driver));
+        bibliographyPage.deleteBook();
+        test.log(Status.PASS, "Deleting book done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS, "Deleting Book Test Done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(bibliographyPage.bookAlertMessage.isDisplayed());
+        Assert.assertEquals(bibliographyPage.getMessage(),"Książka została usunięta pomyślnie");
+
     }
 
 }
