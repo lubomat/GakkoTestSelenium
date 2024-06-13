@@ -30,6 +30,12 @@ public class FaqPage {
     @FindBy(css = "div.alert-text")
     public WebElement faqAlert;
 
+    @FindBy(xpath = "//a[@class='btn btn-sm btn-clean btn-icon btn-icon-md delete-link']")
+    private WebElement deleteButton;
+
+    @FindBy(css = "button.swal2-confirm")
+    private WebElement confirmButton;
+
 
     private WebDriver driver;
 
@@ -62,6 +68,13 @@ public class FaqPage {
 
     public String getMessage() {
         return faqAlert.getText();
+    }
+
+    public void deleteQuestion() {
+        logger.info("Deleting question");
+        deleteButton.click();
+        confirmButton.click();
+        logger.info("Deleting question done");
     }
 
 

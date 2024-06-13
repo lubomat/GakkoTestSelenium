@@ -45,4 +45,20 @@ public class FaqTest extends BaseTest {
         Assert.assertEquals(faqPage.getMessage(),"Faq o identycznych parametrach już istnieje");
     }
 
+    @Test
+    public void deleteQuestionTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Deleting Question Test");
+        FaqPage faqPage = new FaqPage(driver);
+        test.log(Status.PASS,"Entering faq module", SeleniumHelper.getScreenshot(driver));
+        faqPage.enterFaqModule();
+        test.log(Status.PASS,"Entering faq module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS,"Deleting question", SeleniumHelper.getScreenshot(driver));
+        faqPage.deleteQuestion();
+        test.log(Status.PASS,"Deleting question test done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(faqPage.faqAlert.isDisplayed());
+        Assert.assertEquals(faqPage.getMessage(),"Pytanie zostało usunięte pomyślnie");
+    }
+
+
 }
