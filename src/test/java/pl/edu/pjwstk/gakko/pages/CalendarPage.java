@@ -30,6 +30,12 @@ public class CalendarPage {
     @FindBy(css = "div.alert-text")
     public WebElement alertCalendarMessage;
 
+    @FindBy(css = "a.delete-link\n")
+    private WebElement deleteButton;
+
+    @FindBy(css = "button.swal2-confirm.swal2-styled")
+    private WebElement confirmButton;
+
     private WebDriver driver;
 
     public CalendarPage(WebDriver driver) {
@@ -64,5 +70,12 @@ public class CalendarPage {
 
     public String getMessage() {
        return alertCalendarMessage.getText();
+    }
+
+    public void deleteEvent() {
+        logger.info("Deleting event");
+        deleteButton.click();
+        confirmButton.click();
+        logger.info("Deleting event done");
     }
 }
