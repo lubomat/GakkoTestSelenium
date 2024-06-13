@@ -28,5 +28,21 @@ public class FaqTest extends BaseTest {
         Assert.assertEquals(faqPage.getMessage(),"Pytanie zostało zapisane pomyślnie");
     }
 
+    @Test
+    public void addSameQuestionTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Creating Same Question Test");
+        FaqPage faqPage = new FaqPage(driver);
+        test.log(Status.PASS,"Entering faq module", SeleniumHelper.getScreenshot(driver));
+        faqPage.enterFaqModule();
+        test.log(Status.PASS,"Entering faq module", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS,"Adding same question", SeleniumHelper.getScreenshot(driver));
+        faqPage.createNewQuestion(
+                "Testowe",
+                "Test");
+        test.log(Status.PASS,"Adding same question done", SeleniumHelper.getScreenshot(driver));
+
+        Assert.assertTrue(faqPage.faqAlert.isDisplayed());
+        Assert.assertEquals(faqPage.getMessage(),"Faq o identycznych parametrach już istnieje");
+    }
 
 }
