@@ -29,7 +29,8 @@ public class BibliographyPage {
     private WebElement publisherInput;
 
     @FindBy(xpath = "//input[@id='Book_Required' and @value='true']")
-    private WebElement mandatoryItemRadioButton;
+    private WebElement mandatoryItemRadioButton; /**
+                                  problem ze znalezieniem odpowiedniego selektora */
 
     @FindBy(id = "Book_Comment")
     private WebElement commentInput;
