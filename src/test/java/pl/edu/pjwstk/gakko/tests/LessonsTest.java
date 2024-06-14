@@ -12,6 +12,13 @@ public class LessonsTest extends BaseTest {
         lessonsPage.addEmptyLesson("Test","2025-09-13 13:00");
     }
 
-
+    @Test
+    public void addLessonWithChapterTest() throws InterruptedException {
+        LessonsPage lessonsPage = new LessonsPage(driver);
+        lessonsPage.enterLessonsModule();
+        lessonsPage.addNewWithChapterLesson(
+                "Test",
+                "2025-09-13 13:00");
+    }
 
 }

@@ -61,5 +61,22 @@ public class LessonsPage {
         logger.info("Clicking save done");
     }
 
-
+    public void addNewWithChapterLesson(String name, String date) throws InterruptedException {
+        logger.info("Adding lesson");
+        logger.info("Clicking add lesson button");
+        addLessonButton.click();
+        directlyInCourseButton.click();
+        logger.info("Clicking add lesson button done");
+        logger.info("Setting name");
+        nameInput.sendKeys(name);
+        logger.info("Setting name done");
+        logger.info("Clearing and seting date");
+        dateInput.clear();
+        dateInput.sendKeys(date);
+        logger.info("Clearing and seting date done");
+        logger.info("Clicking save");
+        saveButton.click();
+        logger.info("Clicking save done");
+        addChapterButton.click();
+    }
 }
