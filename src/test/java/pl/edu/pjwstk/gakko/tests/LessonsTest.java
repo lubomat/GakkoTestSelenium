@@ -9,7 +9,9 @@ public class LessonsTest extends BaseTest {
     public void addEmptyLessonTest() throws InterruptedException {
         LessonsPage lessonsPage = new LessonsPage(driver);
         lessonsPage.enterLessonsModule();
-        lessonsPage.addEmptyLesson("Test","2025-09-13 13:00");
+        lessonsPage.addEmptyLesson(
+                "Test",
+                "2025-09-13 13:00");
     }
 
     @Test
@@ -18,7 +20,10 @@ public class LessonsTest extends BaseTest {
         lessonsPage.enterLessonsModule();
         lessonsPage.addNewWithChapterLesson(
                 "Test",
-                "2025-09-13 13:00");
+                "2025-09-13 13:00",
+                "Testowy rozdział",
+                "80",
+                "Testowa treść");
     }
 
 }

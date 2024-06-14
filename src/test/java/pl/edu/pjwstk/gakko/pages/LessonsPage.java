@@ -30,6 +30,18 @@ public class LessonsPage {
     @FindBy(className = "flaticon2-plus")
     private WebElement addChapterButton;
 
+    @FindBy(id = "Chapter_Title")
+    private WebElement chapterTitleInput;
+
+    @FindBy(id = "Chapter_PointsToPass")
+    private WebElement pointsInput;
+
+    @FindBy(css = "div.note-editable[role='textbox']")
+    private WebElement noteInput;
+
+    @FindBy(id = "btnSubmitForm")
+    private WebElement submitButton;
+
     private WebDriver driver;
 
     private static final Logger logger = LogManager.getLogger();
@@ -61,7 +73,9 @@ public class LessonsPage {
         logger.info("Clicking save done");
     }
 
-    public void addNewWithChapterLesson(String name, String date) throws InterruptedException {
+    public void addNewWithChapterLesson(String name, String date,
+                                        String chapter, String points,
+                                        String note) throws InterruptedException {
         logger.info("Adding lesson");
         logger.info("Clicking add lesson button");
         addLessonButton.click();
@@ -77,6 +91,21 @@ public class LessonsPage {
         logger.info("Clicking save");
         saveButton.click();
         logger.info("Clicking save done");
+        logger.info("Clicking add chapter");
         addChapterButton.click();
+        logger.info("Clicking add chapter done");
+        logger.info("Setting chapter title");
+        chapterTitleInput.sendKeys(chapter);
+        logger.info("Setting chapter title done");
+        logger.info("Cleaning and setting points");
+        pointsInput.clear();
+        pointsInput.sendKeys(points);
+        logger.info("Cleaning and setting points done");
+        logger.info("Entering note");
+        noteInput.sendKeys(note);
+        logger.info("Entering note done");
+        logger.info("Clicking submit button");
+        submitButton.click();
+        logger.info("Clicking submit button done");
     }
 }
