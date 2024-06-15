@@ -35,8 +35,8 @@ public class LessonsTest extends BaseTest {
         test.log(Status.PASS,"Entering Lessons module", SeleniumHelper.getScreenshot(driver));
         lessonsPage.enterLessonsModule();
         test.log(Status.PASS,"Entering Lessons module done", SeleniumHelper.getScreenshot(driver));
-        test.log(Status.PASS,"Creating empty lesson", SeleniumHelper.getScreenshot(driver));
-        lessonsPage.addNewWithChapterLesson(
+        test.log(Status.PASS,"Creating lesson with chapter", SeleniumHelper.getScreenshot(driver));
+        lessonsPage.addLessonWithChapter(
                 "Test",
                 "2025-09-13 13:00",
                 "Testowy rozdział",
@@ -48,4 +48,28 @@ public class LessonsTest extends BaseTest {
         Assert.assertEquals(lessonsPage.getMessage(),"Lekcja została zapisana pomyślnie");
     }
 
+    @Test
+    public void addLessonWithShowAnswerChapterTypeTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Creating lesson with chapter");
+        LessonsPage lessonsPage = new LessonsPage(driver);
+        test.log(Status.PASS,"Entering Lessons module", SeleniumHelper.getScreenshot(driver));
+        lessonsPage.enterLessonsModule();
+        test.log(Status.PASS,"Entering Lessons module done", SeleniumHelper.getScreenshot(driver));
+        test.log(Status.PASS,"Creating lesson with chapter", SeleniumHelper.getScreenshot(driver));
+        lessonsPage.addLessonWithShowAnswerChapterType(
+                "Test",
+                "2025-09-13 13:00",
+                "Testowy rozdział",
+                "70",
+                "testowy tekst wytłuszczony",
+                "testowe pytanie",
+                "testowa odpowiedz");
+
+        Assert.assertTrue(lessonsPage.lessonsAlertMessage.isDisplayed());
+        Assert.assertEquals(lessonsPage.getMessage(),"Rozdział został zapisany pomyślnie");
+
+    }
+
 }
+
+
