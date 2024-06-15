@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class LessonsTest extends BaseTest {
 
-    @Test
+    @Test()
     public void addEmptyLessonTest() throws IOException {
         ExtentTest test = extentReports.createTest("Creating new empty lesson");
         LessonsPage lessonsPage = new LessonsPage(driver);
@@ -48,7 +48,7 @@ public class LessonsTest extends BaseTest {
         Assert.assertEquals(lessonsPage.getMessage(),"Lekcja została zapisana pomyślnie");
     }
 
-    @Test
+    @Test(priority = 0)
     public void addLessonWithShowAnswerChapterTypeTest() throws IOException {
         ExtentTest test = extentReports.createTest("Creating lesson with chapter");
         LessonsPage lessonsPage = new LessonsPage(driver);
@@ -67,6 +67,19 @@ public class LessonsTest extends BaseTest {
 
         Assert.assertTrue(lessonsPage.lessonsAlertMessage.isDisplayed());
         Assert.assertEquals(lessonsPage.getMessage(),"Rozdział został zapisany pomyślnie");
+
+    }
+
+    @Test(priority = 1)
+    public void showAnswerLessonCheckTest() throws IOException {
+        ExtentTest test = extentReports.createTest("Creating lesson with chapter");
+        LessonsPage lessonsPage = new LessonsPage(driver);
+        test.log(Status.PASS,"Entering Lessons module", SeleniumHelper.getScreenshot(driver));
+        lessonsPage.enterLessonsModule();
+        test.log(Status.PASS,"Entering Lessons module done", SeleniumHelper.getScreenshot(driver));
+        lessonsPage.showAnswer();
+
+        Assert.assertTrue(lessonsPage.answerInfo.isDisplayed());
 
     }
 

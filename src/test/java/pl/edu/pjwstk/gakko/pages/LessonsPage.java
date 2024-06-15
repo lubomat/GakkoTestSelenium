@@ -58,6 +58,15 @@ public class LessonsPage {
     @FindBy(name = "Chapter.Elements[0][AnswerText]")
     private WebElement answerInput;
 
+    @FindBy(css = "a.btn.btn-sm.btn-clean.btn-icon.btn-icon-md[data-original-title='Otwórz']")
+    private WebElement openButton;
+
+    @FindBy(css = "button.btn.btn-primary")
+    private WebElement showAnswerButton;
+
+    @FindBy(id = "swal2-title")
+    public WebElement answerInfo;
+
 
     private WebDriver driver;
 
@@ -165,6 +174,12 @@ public class LessonsPage {
         questionInput.sendKeys(question);
         answerInput.sendKeys(answer);
         submitButton.click();
+
+    }
+
+    public void showAnswer() {
+        openButton.click();
+        showAnswerButton.click();
 
     }
 
