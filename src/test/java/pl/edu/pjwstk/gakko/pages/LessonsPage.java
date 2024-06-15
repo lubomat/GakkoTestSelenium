@@ -42,6 +42,9 @@ public class LessonsPage {
     @FindBy(id = "btnSubmitForm")
     private WebElement submitButton;
 
+    @FindBy(css = "div.alert-text")
+    public WebElement lessonsAlertMessage;
+
     private WebDriver driver;
 
     private static final Logger logger = LogManager.getLogger();
@@ -50,12 +53,15 @@ public class LessonsPage {
         PageFactory.initElements(driver,this);
         this.driver = driver;
     }
+    public String getMessage() {
+        return lessonsAlertMessage.getText();
+    }
 
     public void enterLessonsModule() {
         lessonsModuleButton.click();
     }
 
-    public void addEmptyLesson(String name, String date) throws InterruptedException {
+    public void addEmptyLesson(String name, String date) {
         logger.info("Adding lesson");
         logger.info("Clicking add lesson button");
         addLessonButton.click();
@@ -75,7 +81,7 @@ public class LessonsPage {
 
     public void addNewWithChapterLesson(String name, String date,
                                         String chapter, String points,
-                                        String note) throws InterruptedException {
+                                        String note) {
         logger.info("Adding lesson");
         logger.info("Clicking add lesson button");
         addLessonButton.click();
