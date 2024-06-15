@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class LessonsTest extends BaseTest {
 
-    @Test()
+    @Test(priority = 2)
     public void addEmptyLessonTest() throws IOException {
         ExtentTest test = extentReports.createTest("Creating new empty lesson");
         LessonsPage lessonsPage = new LessonsPage(driver);
@@ -28,7 +28,7 @@ public class LessonsTest extends BaseTest {
         Assert.assertEquals(lessonsPage.getMessage(),"Lekcja została zapisana pomyślnie");
     }
 
-    @Test
+    @Test(priority = 3)
     public void addLessonWithChapterTest() throws IOException {
         ExtentTest test = extentReports.createTest("Creating lesson with chapter");
         LessonsPage lessonsPage = new LessonsPage(driver);
