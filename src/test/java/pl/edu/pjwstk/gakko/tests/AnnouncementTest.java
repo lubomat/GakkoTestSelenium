@@ -10,11 +10,14 @@ import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 import java.io.IOException;
 
 public class AnnouncementTest extends BaseTest {
+    private AnnouncementPage announcementPage;
     @Test(priority = 0)
     public void createAnnouncementTest() throws IOException {
 
+        announcementPage.counter = 12;
+
         ExtentTest test = extentReports.createTest("Creating Announcement Test");
-        AnnouncementPage announcementPage = new AnnouncementPage(driver);
+//        AnnouncementPage announcementPage = new AnnouncementPage(driver);
         test.log(Status.PASS, "Login done", SeleniumHelper.getScreenshot(driver));
         test.log(Status.PASS, "Entering announcement module", SeleniumHelper.getScreenshot(driver));
         announcementPage.enterAnnouncementModule();

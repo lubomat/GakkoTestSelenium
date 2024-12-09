@@ -10,6 +10,8 @@ import org.openqa.selenium.support.PageFactory;
 import pl.edu.pjwstk.gakko.utils.SeleniumHelper;
 
 public class AnnouncementPage {
+
+     public int counter = 10;
     @FindBy(xpath = "//a[@href='/edux/7984/announcements']")
     private WebElement announcementButton;
 
